@@ -8,7 +8,7 @@ import (
 
 	xrv "github.com/mattermost/xml-roundtrip-validator"
 
-	"github.com/crewjam/saml"
+	"github.com/clerk/saml"
 )
 
 func randomBytes(n int) []byte {

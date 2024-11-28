@@ -23,8 +23,8 @@ import (
 	dsig "github.com/russellhaering/goxmldsig"
 	"github.com/russellhaering/goxmldsig/etreeutils"
 
-	"github.com/crewjam/saml/logger"
-	"github.com/crewjam/saml/xmlenc"
+	"github.com/clerk/saml/logger"
+	"github.com/clerk/saml/xmlenc"
 )
 
 // NameIDFormat is the format of the id
@@ -1672,7 +1672,11 @@ func elementToBytes(el *etree.Element) ([]byte, error) {
 	doc := etree.NewDocument()
 	doc.SetRoot(el.Copy())
 	for space, uri := range namespaces {
-		doc.Root().CreateAttr("xmlns:"+space, uri)
+		if space == "" {
+			doc.Root().CreateAttr("xmlns", uri)
+		} else {
+			doc.Root().CreateAttr("xmlns:"+space, uri)
+		}
 	}
 
 	return doc.WriteToBytes()
