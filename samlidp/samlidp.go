@@ -100,6 +100,8 @@ func (s *Server) InitializeHTTP() {
 		s.IDP.ServeMetadata(w, r)
 	})
 	mux.HandleFunc("/sso", func(w http.ResponseWriter, r *http.Request) {
+		s.idpConfigMu.RLock()
+		defer s.idpConfigMu.RUnlock()
 		s.IDP.ServeSSO(w, r)
 	})
 
