@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/crewjam/saml"
-	"github.com/crewjam/saml/logger"
+	"github.com/clerk/saml"
+	"github.com/clerk/saml/logger"
 )
 
 // Options represent the parameters to New() for creating a new IDP server

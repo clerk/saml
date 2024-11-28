@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/crewjam/saml"
+	"github.com/clerk/saml"
 )
 
 // Service represents a configured SP for whom this IDP provides authentication services.
