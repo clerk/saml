@@ -1678,8 +1678,6 @@ func elementToBytes(el *etree.Element) ([]byte, error) {
 			doc.Root().CreateAttr("xmlns:"+space, uri)
 		}
 	}
-	xmlstr, _ := doc.WriteToString()
-	fmt.Printf("%s", xmlstr)
 	return doc.WriteToBytes()
 }
 
