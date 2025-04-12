@@ -2,6 +2,8 @@ module github.com/clerk/saml
 
 go 1.23.0
 
+toolchain go1.24.2
+
 require (
 	github.com/beevik/etree v1.2.0
 	github.com/crewjam/httperr v0.2.0
@@ -13,7 +15,7 @@ require (
 	github.com/russellhaering/goxmldsig v1.4.0
 	github.com/stretchr/testify v1.10.0
 	github.com/zenazn/goji v1.0.1
-	golang.org/x/crypto v0.35.0
+	golang.org/x/crypto v0.37.0
 	gotest.tools v2.2.0+incompatible
 )
 
