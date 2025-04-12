@@ -7,6 +7,7 @@ import (
 	"crypto/rsa"
 	"crypto/tls"
 	"crypto/x509"
+	"encoding/base64"
 	"encoding/xml"
 	"flag"
 	"fmt"
@@ -14,7 +15,6 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/dchest/uniuri"
 	"github.com/kr/pretty"
 
 	"github.com/clerk/saml/samlsp"
@@ -32,8 +32,14 @@ type Link struct {
 // CreateLink handles requests to create links
 func CreateLink(w http.ResponseWriter, r *http.Request) {
 	account := r.Header.Get("X-Remote-User")
+
+	randomness := make([]byte, 8)
+	if _, err := r.Body.Read(randomness); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 	l := Link{
-		ShortLink: uniuri.New(),
+		ShortLink: base64.RawURLEncoding.EncodeToString(randomness),
 		Target:    r.FormValue("t"),
 		Owner:     account,
 	}
