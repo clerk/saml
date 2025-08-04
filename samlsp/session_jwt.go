@@ -7,7 +7,7 @@ import (
 
 	"github.com/golang-jwt/jwt/v5"
 
-	"github.com/clerk/saml"
+	"github.com/crewjam/saml"
 )
 
 const (
